@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
-
+from .config import config_map
 
 # instantiate the db
 db = SQLAlchemy()
@@ -14,8 +14,8 @@ def create_app(script_info=None):
     app = Flask(__name__)
 
     # set config
-    app_settings = os.getenv('APP_SETTINGS')
-    app.config.from_object(app_settings)
+    app_environment = os.getenv('APP_ENVIRONMENT')
+    app.config.from_object(config_map[app_environment])
 
     # set up extensions
     db.init_app(app)

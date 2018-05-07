@@ -10,9 +10,9 @@ services:
     expose:
       - '5000'
     environment:
-      - APP_SETTINGS=project.config.ProductionConfig
-      - DATABASE_URL=postgres://postgres:postgres@users-db:5432/users_prod
-      - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5432/users_test
+      - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_TEST_URL=${DATABASE_TEST_URL}
     depends_on:
       - users-db
     links:
@@ -26,8 +26,8 @@ services:
     ports:
       - 5435:5432
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
 
   nginx:
