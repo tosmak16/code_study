@@ -1,6 +1,8 @@
-venv
+env
 __pycache__
 ../../.idea/
 services/users/.env/
 ./services/users/.env
 .env
+.idea/
+.idea/workspace.xml
