@@ -12,23 +12,25 @@ def ping_pong():
         'message': 'pong!'
     })
 
+
 @users_blueprint.route('/users', methods=['POST'])
 def create_user():
     payload = request.get_json()
     if not payload:
         response_object={'status': 'fail', 'message': 'JSON object in request body can not be empty'}
-        return jsonify(response_object),400
+        return jsonify(response_object), 400
 
     if 'username' not in payload:
         response_object={'status': 'fail', 'message': 'Invalid payload.'}
-        return jsonify(response_object),400
+        return jsonify(response_object), 400
 
     username = payload.get('username').strip()
     email = payload.get('email').strip()
 
     user = User.query.filter_by(email=email).first()
     if user:
-        response_object={'status': 'fail', 'message': 'Sorry. That email already exists.'}
+        response_object={'status': 'fail',
+                         'message': 'Sorry. That email already exists.'}
         return jsonify(response_object), 400
 
     db.session.add(User(username=username, email=email))
@@ -66,7 +68,6 @@ def get_single_user(user_id):
         return jsonify(response_object), 404
 
 
-
 @users_blueprint.route('/users', methods=['GET'])
 def get_all_users():
     """Get all users"""
@@ -78,6 +79,7 @@ def get_all_users():
     }
     return jsonify(response_object), 200
 
+
 @users_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -87,4 +89,3 @@ def index():
         db.session.commit()
     users = User.query.all()
     return render_template('index.html', users=users)
-

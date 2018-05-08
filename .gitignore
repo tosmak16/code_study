@@ -6,3 +6,4 @@ services/users/.env/
 .env
 .idea/
 .idea/workspace.xml
+services/users/htmlcov/

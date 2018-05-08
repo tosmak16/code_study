@@ -5,7 +5,7 @@ class BaseConfig:
     """Base configuration"""
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY=os.environ.get('SECRET')
+    SECRET_KEY = os.environ.get('SECRET')
 
 
 class DevelopmentConfig(BaseConfig):
@@ -24,8 +24,7 @@ class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 
-
-config_map ={
+config_map = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
     'production': ProductionConfig
