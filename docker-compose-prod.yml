@@ -13,6 +13,7 @@ services:
       - APP_ENVIRONMENT=${APP_ENVIRONMENT}
       - DATABASE_URL=${DATABASE_URL}
       - DATABASE_TEST_URL=${DATABASE_TEST_URL}
+      - SECRET=${SECRET}
     depends_on:
       - users-db
     links:

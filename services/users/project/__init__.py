@@ -2,10 +2,14 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_debugtoolbar import DebugToolbarExtension
+
 from .config import config_map
 
 # instantiate the db
 db = SQLAlchemy()
+
+toolbar = DebugToolbarExtension()
 
 
 def create_app(script_info=None):
@@ -16,9 +20,9 @@ def create_app(script_info=None):
     # set config
     app_environment = os.getenv('APP_ENVIRONMENT')
     app.config.from_object(config_map[app_environment])
-
     # set up extensions
     db.init_app(app)
+    toolbar.init_app(app)
 
     # register blueprints
     from project.api.users import users_blueprint
