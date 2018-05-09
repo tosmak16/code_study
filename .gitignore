@@ -7,3 +7,4 @@ services/users/.env/
 .idea/
 .idea/workspace.xml
 services/users/htmlcov/
+services/client/node_modules/
