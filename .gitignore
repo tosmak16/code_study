@@ -1,6 +1,7 @@
 env
 __pycache__
-../../.idea/
+.idea/workspace.xml
+.idea
 services/users/.env/
 ./services/users/.env
 .env
@@ -8,3 +9,6 @@ services/users/.env/
 .idea/workspace.xml
 services/users/htmlcov/
 services/client/node_modules/
+services/client/src/components/__tests__/__snapshots__/
+services/client/src/components/__tests__/__snapshots__
+services/client/coverage/
